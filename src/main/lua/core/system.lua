@@ -60,8 +60,15 @@ function system.java()
   }
 end
 
+-- The classpath with every entry made absolute: `java -jar minesrc.jar` reports
+-- a relative path, and the decompiler workers start in another folder.
 function system.classpath()
-  return system.property('java.class.path')
+  local separator = system.property('path.separator')
+  local entries = {}
+  for entry in system.property('java.class.path'):gmatch('[^' .. separator .. ']+') do
+    entries[#entries + 1] = fs:absolute(entry)
+  end
+  return table.concat(entries, separator)
 end
 
 function system.home()
