@@ -1,8 +1,7 @@
 name: Build
 
 on:
-  push:
-    branches: [main]
+  workflow_call:
   pull_request:
     branches: [main]
 
@@ -38,8 +37,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
       - name: Build and test
         run: ./gradlew build --no-daemon --stacktrace
-      - name: Upload distribution
+      - name: Upload jar
         uses: actions/upload-artifact@v7
         with:
           name: minesrc
-          path: build/distributions/*.zip
+          path: build/libs/minesrc-*[0-9].jar
