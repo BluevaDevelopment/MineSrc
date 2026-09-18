@@ -131,16 +131,32 @@ where Temurin has no native build (Java 8 on Apple Silicon).
 
 ## Installation
 
-MineSrc is built from source with the project's Gradle wrapper:
+Every commit to `main` is built and published as a
+[GitHub release](https://github.com/BluevaDevelopment/MineSrc/releases/latest)
+with a single runnable jar. Download it and run it with Java 25:
+
+```text
+curl -LO https://github.com/BluevaDevelopment/MineSrc/releases/download/v26.1/minesrc-26.1.jar
+java -jar minesrc-26.1.jar vanilla 1.21.8
+```
+
+To type `minesrc` on its own, point an alias at the jar:
+
+```text
+alias minesrc='java -jar /path/to/minesrc-26.1.jar'           # macOS and Linux
+doskey minesrc=java -jar C:\path\to\minesrc-26.1.jar $*      # Windows
+```
+
+### Building From Source
 
 ```text
 git clone https://github.com/BluevaDevelopment/MineSrc.git
 cd MineSrc
-./gradlew installDist
+./gradlew build
 ```
 
-The launcher is then at `build/install/minesrc/bin/minesrc` (`minesrc.bat` on
-Windows). Put that `bin` folder on your `PATH`, or run it in place.
+The jar is written to `build/libs/minesrc-<version>.jar`. `./gradlew installDist`
+also puts a launcher at `build/install/minesrc/bin/minesrc`.
 
 ## Cache
 
