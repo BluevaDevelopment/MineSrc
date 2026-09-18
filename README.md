@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-26.1-blue">
+  <img alt="Version" src="https://img.shields.io/badge/version-26.2-blue">
   <img alt="Lua" src="https://img.shields.io/badge/Lua-5.5.1-000080?logo=lua&logoColor=white">
   <img alt="Mawu" src="https://img.shields.io/badge/Mawu-26.3-000080">
   <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-2.4.20-7F52FF?logo=kotlin&logoColor=white">
@@ -136,15 +136,15 @@ Every commit to `main` is built and published as a
 with a single runnable jar. Download it and run it with Java 25:
 
 ```text
-curl -LO https://github.com/BluevaDevelopment/MineSrc/releases/download/v26.1/minesrc-26.1.jar
-java -jar minesrc-26.1.jar vanilla 1.21.8
+curl -LO https://github.com/BluevaDevelopment/MineSrc/releases/download/v26.2/minesrc-26.2.jar
+java -jar minesrc-26.2.jar vanilla 1.21.8
 ```
 
 To type `minesrc` on its own, point an alias at the jar:
 
 ```text
-alias minesrc='java -jar /path/to/minesrc-26.1.jar'           # macOS and Linux
-doskey minesrc=java -jar C:\path\to\minesrc-26.1.jar $*      # Windows
+alias minesrc='java -jar /path/to/minesrc-26.2.jar'           # macOS and Linux
+doskey minesrc=java -jar C:\path\to\minesrc-26.2.jar $*      # Windows
 ```
 
 ### Building From Source
