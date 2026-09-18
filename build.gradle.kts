@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "2.4.20"
     id("net.blueva.mawu") version "26.3"
+    id("com.gradleup.shadow") version "9.6.1"
     application
 }
 
@@ -46,6 +47,23 @@ tasks.named<JavaExec>("run") {
     val directory = layout.projectDirectory.dir("run").asFile
     workingDir = directory
     doFirst { directory.mkdirs() }
+}
+
+// The jar users download: everything inside, runnable with `java -jar minesrc-<version>.jar`.
+tasks.shadowJar {
+    archiveBaseName.set("minesrc")
+    archiveClassifier.set("")
+    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "META-INF/*.EC")
+    mergeServiceFiles()
+}
+
+tasks.jar {
+    // The thin jar only feeds installDist; keep its name apart from the one users get.
+    archiveClassifier.set("thin")
+}
+
+tasks.build {
+    dependsOn(tasks.shadowJar)
 }
 
 tasks.processResources {
